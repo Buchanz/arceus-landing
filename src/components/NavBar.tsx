@@ -1,11 +1,12 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function NavBar() {
   return (
     <nav className="bg-white border-b border-gray-200 p-4 group relative z-50">
       <div className="max-w-6xl mx-auto flex justify-between items-center">
-        <a href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <Image
             src="/assets/arceus-logo-glass.png"
             alt="Arceus Logo"
@@ -14,7 +15,7 @@ export default function NavBar() {
             priority
           />
           <span className="text-[13px] font-medium text-[#1d1d1f]/80">Arceus</span>
-        </a>
+        </Link>
 
         <div className="relative">
           <span className="text-[13px] font-medium text-[#1d1d1f]/80 cursor-pointer">
