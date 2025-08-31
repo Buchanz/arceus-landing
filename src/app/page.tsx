@@ -6,12 +6,12 @@ import BottomCTA from "../components/BottomCTA";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white text-[#1d1d1f] antialiased">
+    <main className="min-h-screen bg-white text-[#1d1d1f] antialiased overflow-x-hidden flex flex-col">
       <NavBar />
-      <div className="transition-all duration-300">
+      <div className="transition-all duration-300 flex-1">
         <Hero />
-        <BottomCTA />
       </div>
+      <BottomCTA />
     </main>
   );
 }
