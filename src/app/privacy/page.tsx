@@ -24,7 +24,7 @@ export default function PrivacyPolicy() {
 
             <div className="prose prose-lg max-w-none">
               <p className="mb-6">
-                This Privacy Policy describes how Arceus Inc. ("we," "us," or "our") collects, uses, and shares information in connection with your use of our Aiva product and any associated services (collectively, the "Service").
+                This Privacy Policy describes how Arceus Inc. (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) collects, uses, and shares information in connection with your use of our Aiva product and any associated services (collectively, the &ldquo;Service&rdquo;).
               </p>
 
               <p className="mb-8">
@@ -51,7 +51,7 @@ export default function PrivacyPolicy() {
                 <h2 className="text-2xl font-semibold mb-4">How We Use Your Information</h2>
                 <p className="mb-4">We use the information we collect for the following purposes:</p>
                 <ul className="list-disc pl-6 mb-4 space-y-2">
-                  <li><strong>To Provide and Operate the Service:</strong> To create and maintain accounts, deliver Aiva's productivity and AI automation features, and support integrations.</li>
+                  <li><strong>To Provide and Operate the Service:</strong> To create and maintain accounts, deliver Aiva&apos;s productivity and AI automation features, and support integrations.</li>
                   <li><strong>To Improve Aiva:</strong> To analyze app performance, monitor reliability, and improve user experience.</li>
                   <li><strong>To Communicate With You:</strong> To send important updates, service notifications, and marketing emails (with the option to opt out).</li>
                   <li><strong>To Process Payments:</strong> To manage subscriptions and payments via Stripe.</li>
@@ -106,7 +106,7 @@ export default function PrivacyPolicy() {
               <hr className="my-8 border-gray-300" />
 
               <section className="mb-8">
-                <h2 className="text-2xl font-semibold mb-4">Children's Privacy</h2>
+                <h2 className="text-2xl font-semibold mb-4">Children&apos;s Privacy</h2>
                 <p>
                   Aiva is not intended for children under the age of 13 (or the minimum legal age in your jurisdiction). We do not knowingly collect data from children. If we learn we have collected personal data from a child under 13, we will delete it promptly.
                 </p>
@@ -126,7 +126,7 @@ export default function PrivacyPolicy() {
               <section className="mb-8">
                 <h2 className="text-2xl font-semibold mb-4">Changes to This Privacy Policy</h2>
                 <p>
-                  We may update this Privacy Policy periodically. If we make material changes, we will update the "Effective Date" above and post the revised policy on our website.
+                  We may update this Privacy Policy periodically. If we make material changes, we will update the &ldquo;Effective Date&rdquo; above and post the revised policy on our website.
                 </p>
               </section>
 
