@@ -8,11 +8,11 @@ export default function BottomCTA() {
           {/* Centered links */}
           <div className="mx-auto w-[min(800px,92%)] text-center">
             <div className="inline-flex flex-wrap items-baseline justify-center gap-x-4 gap-y-2">
-              <a href="#" className="hover:text-[#1d1d1f]">Privacy Policy</a>
+              <a href="/privacy" className="hover:text-[#1d1d1f]">Privacy Policy</a>
               <span className="opacity-40">|</span>
               <a href="mailto:info@arceus.ca" className="hover:text-[#1d1d1f]">Contact</a>
               <span className="opacity-40">|</span>
-              <a href="#" className="hover:text-[#1d1d1f]">Terms of Use</a>
+              <a href="/terms" className="hover:text-[#1d1d1f]">Terms of Use</a>
             </div>
           </div>
         </div>
