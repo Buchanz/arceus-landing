@@ -24,7 +24,7 @@ export default function TermsOfUse() {
 
             <div className="prose prose-lg max-w-none">
               <p className="mb-6">
-                This Terms of Use describes how Arceus Inc. ("we," "us," or "our") collects, uses, and shares information in connection with your use of our Aiva product and any associated services (collectively, the "Service").
+                This Terms of Use describes how Arceus Inc. (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) collects, uses, and shares information in connection with your use of our Aiva product and any associated services (collectively, the &ldquo;Service&rdquo;).
               </p>
 
               <p className="mb-8">
@@ -88,7 +88,7 @@ export default function TermsOfUse() {
               <hr className="my-8 border-gray-300" />
 
               <section className="mb-8">
-                <h2 className="text-2xl font-semibold mb-4">Children's Privacy</h2>
+                <h2 className="text-2xl font-semibold mb-4">Children&apos;s Privacy</h2>
                 <p className="mb-4">
                   Aiva is not intended for children under 13 years of age, and we do not knowingly collect personal information from children. If we discover that data has been collected from a child under 13, we will promptly delete it.
                 </p>
@@ -108,7 +108,7 @@ export default function TermsOfUse() {
               <section className="mb-8">
                 <h2 className="text-2xl font-semibold mb-4">Changes to This Policy</h2>
                 <p className="mb-4">
-                  We may update this Terms of Use periodically. Any changes will be reflected in a revised "Effective Date" and posted on our website.
+                  We may update this Terms of Use periodically. Any changes will be reflected in a revised &ldquo;Effective Date&rdquo; and posted on our website.
                 </p>
               </section>
 
