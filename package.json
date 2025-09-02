@@ -10,9 +10,11 @@
     "export": "next build && next export"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.56.1",
     "next": "15.5.0",
     "react": "^19",
-    "react-dom": "^19"
+    "react-dom": "^19",
+    "resend": "^6.0.2"
   },
   "devDependencies": {
     "@types/node": "^22",
