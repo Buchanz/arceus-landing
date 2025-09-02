@@ -1,12 +1,6 @@
 import * as React from 'react';
 
-interface WaitlistConfirmationProps {
-  siteUrl: string;
-}
-
-export const WaitlistConfirmation: React.FC<WaitlistConfirmationProps> = ({
-  siteUrl,
-}) => (
+export const WaitlistConfirmation: React.FC = () => (
   <div style={{ fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif', maxWidth: '600px', margin: '0 auto', padding: '40px 20px', backgroundColor: '#ffffff' }}>
     {/* Centered Header with Aiva Logo */}
     <div style={{ textAlign: 'center', marginBottom: '50px' }}>

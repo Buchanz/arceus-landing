@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { Resend } from "resend";
 import { WaitlistConfirmation } from "@/emails/WaitlistConfirmation";
+import React from "react";
 
 const supabase = createClient(
   process.env.SUPABASE_URL!,
@@ -33,13 +34,12 @@ export async function POST(req: Request) {
       from: `Arceus <${process.env.FROM_EMAIL!}>`,
       to: email,
       subject: "🎉 Welcome to the Aiva Waitlist",
-      react: WaitlistConfirmation({
-        siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://www.arceus.ca",
-      }),
+      react: React.createElement(WaitlistConfirmation, {}),
     });
 
     return NextResponse.json({ ok: true });
-  } catch (err: any) {
-    return NextResponse.json({ ok: false, error: err.message || "Server error" }, { status: 500 });
+  } catch (err: unknown) {
+    const errorMessage = err instanceof Error ? err.message : "Server error";
+    return NextResponse.json({ ok: false, error: errorMessage }, { status: 500 });
   }
 }

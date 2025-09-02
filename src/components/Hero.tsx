@@ -42,7 +42,7 @@ export default function Hero() {
         setErrorMessage(data.error || "Something went wrong. Please try again.");
         setSubmitStatus("error");
       }
-    } catch (error) {
+    } catch {
       setErrorMessage("Network error. Please check your connection and try again.");
       setSubmitStatus("error");
     } finally {

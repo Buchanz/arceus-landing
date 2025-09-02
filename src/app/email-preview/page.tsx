@@ -8,7 +8,7 @@ export default function EmailPreview() {
       <div className="max-w-4xl mx-auto px-4">
         <h1 className="text-2xl font-bold mb-6 text-center">Email Template Preview</h1>
         <div className="bg-white rounded-lg shadow-lg p-8">
-          <WaitlistConfirmation siteUrl="https://www.arceus.ca" />
+          <WaitlistConfirmation />
         </div>
       </div>
     </div>
