@@ -22,7 +22,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ ok: false, error: "Invalid email" }, { status: 400 });
     }
 
-    // 1) Save to Supabase (upsert)
+    // 1) Always save to Supabase first (upsert) - this should never fail
     const { error } = await supabase
       .from("marketing.waitlist")
       .upsert(
@@ -34,12 +34,12 @@ export async function POST(req: Request) {
       const msg = String(error.message || "");
       // allow unique/duplicate conflicts to pass silently
       if (!/duplicate|unique/i.test(msg)) {
-        return NextResponse.json({ ok: false, error: msg }, { status: 500 });
+        console.error("Supabase error:", error);
+        return NextResponse.json({ ok: false, error: "Failed to save email" }, { status: 500 });
       }
     }
 
-    // 2) Try to send email, but DON'T fail the request if this throws
-    //    (common when domain isn't verified yet)
+    // 2) Try to send email - if this fails, we still have the email saved
     try {
       await resend.emails.send({
         from: `Arceus <${process.env.FROM_EMAIL!}>`,
@@ -47,13 +47,32 @@ export async function POST(req: Request) {
         subject: "You're on the Aiva waitlist ✨",
         react: React.createElement(WaitlistConfirmation, {}),
       });
+      
+      // Email sent successfully
+      return NextResponse.json({ ok: true });
+      
     } catch (sendErr: unknown) {
       console.error("Resend email error:", sendErr instanceof Error ? sendErr.message : sendErr);
-      // swallow error so frontend still shows success
+      
+      // Email failed but email is saved - return specific error for DNS pending
+      const errorMsg = sendErr instanceof Error ? sendErr.message : "Unknown error";
+      
+      if (errorMsg.includes("domain") || errorMsg.includes("DNS") || errorMsg.includes("pending")) {
+        return NextResponse.json({ 
+          ok: false, 
+          error: "Email saved but confirmation email failed to send. This usually means our email domain is still being verified. You're still on the waitlist!" 
+        }, { status: 200 });
+      }
+      
+      // Other email errors
+      return NextResponse.json({ 
+        ok: false, 
+        error: "Email saved but confirmation email failed to send. You're still on the waitlist, but please check your email address." 
+      }, { status: 200 });
     }
 
-    return NextResponse.json({ ok: true });
   } catch (e: unknown) {
+    console.error("Unexpected error:", e);
     const errorMessage = e instanceof Error ? e.message : "Server error";
     return NextResponse.json({ ok: false, error: errorMessage }, { status: 500 });
   }
