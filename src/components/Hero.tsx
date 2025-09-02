@@ -105,7 +105,7 @@ export default function Hero() {
           {/* Status messages */}
           {submitStatus === "success" && (
             <div className="mt-3 text-sm text-green-600 font-medium">
-              🎉 Welcome to the waitlist! Check your email for confirmation.
+              You&apos;re on the waitlist! A confirmation email will arrive shortly.
             </div>
           )}
           
