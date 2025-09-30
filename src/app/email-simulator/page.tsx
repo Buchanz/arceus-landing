@@ -96,7 +96,7 @@ export default function EmailSimulator() {
                   margin: '0 auto' 
                 }}
               >
-                You're officially on the list. We'll email you when early access opens.
+                    You&apos;re officially on the list. We&apos;ll email you when early access opens.
               </p>
             </div>
 
@@ -129,11 +129,11 @@ export default function EmailSimulator() {
                   <ul className="text-gray-600 space-y-4" style={{ color: '#515154', fontSize: '16px', lineHeight: '1.6', paddingLeft: '0', margin: '0', listStyle: 'none' }}>
                     <li className="relative pl-6">
                       <span className="absolute left-0 top-2 w-1.5 h-1.5 bg-black rounded-full"></span>
-                      We'll keep you updated on our progress
+                        We&apos;ll keep you updated on our progress
                     </li>
                     <li className="relative pl-6">
                       <span className="absolute left-0 top-2 w-1.5 h-1.5 bg-black rounded-full"></span>
-                      You'll be among the first to know when Aiva launches
+                      You&apos;ll be among the first to know when Aiva launches
                     </li>
                     <li className="relative pl-6">
                       <span className="absolute left-0 top-2 w-1.5 h-1.5 bg-black rounded-full"></span>

@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { Resend } from "resend";
-import { WaitlistConfirmation } from "@/emails/WaitlistConfirmation";
-import React from "react";
 
 export const runtime = "nodejs"; // ensure Node runtime for Resend/Supabase SDKs
 

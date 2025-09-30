@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 export default function EmailDesign() {
   const [isMobile, setIsMobile] = useState(false);
@@ -94,7 +95,7 @@ export default function EmailDesign() {
                     margin: '0 auto' 
                   }}
                 >
-                  You're officially on the list. We'll email you when early access opens.
+                    You&apos;re officially on the list. We&apos;ll email you when early access opens.
                 </p>
               </div>
 
@@ -125,11 +126,11 @@ export default function EmailDesign() {
                     <ul className="text-gray-600 space-y-4" style={{ color: '#515154', fontSize: '16px', lineHeight: '1.6', paddingLeft: '0', margin: '0', listStyle: 'none' }}>
                       <li className="relative pl-6">
                         <span className="absolute left-0 top-2 w-1.5 h-1.5 bg-black rounded-full"></span>
-                        We'll keep you updated on our progress
+                        We&apos;ll keep you updated on our progress
                       </li>
                       <li className="relative pl-6">
                         <span className="absolute left-0 top-2 w-1.5 h-1.5 bg-black rounded-full"></span>
-                        You'll be among the first to know when Aiva launches
+                        You&apos;ll be among the first to know when Aiva launches
                       </li>
                       <li className="relative pl-6">
                         <span className="absolute left-0 top-2 w-1.5 h-1.5 bg-black rounded-full"></span>
@@ -254,12 +255,12 @@ export default function EmailDesign() {
             This is exactly how your waitlist confirmation email will look to users.
           </p>
           <div className="flex justify-center gap-4">
-            <a 
+            <Link 
               href="/" 
               className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
             >
               ← Back to Landing Page
-            </a>
+            </Link>
             <a 
               href="/email-simulator" 
               className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
