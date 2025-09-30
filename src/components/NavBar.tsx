@@ -22,8 +22,11 @@ export default function NavBar() {
             <span className="text-[13px] font-medium text-[#1d1d1f]/80 hidden sm:block">Arceus</span>
           </Link>
 
-          {/* Desktop socials trigger */}
-          <div className="relative hidden md:block">
+          {/* Desktop navigation links */}
+          <div className="hidden md:flex items-center gap-8">
+            <Link href="/aiva" className="text-[13px] font-medium text-[#1d1d1f]/80 hover:text-[#1d1d1f] transition-colors">
+              Aiva
+            </Link>
             <span className="text-[13px] font-medium text-[#1d1d1f]/80 cursor-pointer">
               Socials
             </span>
@@ -74,9 +77,10 @@ export default function NavBar() {
           </div>
         </div>
 
-        {/* Mobile social links menu */}
+        {/* Mobile navigation menu */}
         <div className={`md:hidden transition-all duration-300 overflow-hidden ${isMobileMenuOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'}`}>
           <div className="flex flex-col items-start gap-5 py-6 border-t border-gray-200 mt-4 px-4">
+            <Link href="/aiva" className="text-[15px] text-[#1d1d1f]/80 hover:text-[#1d1d1f] transition-colors w-full text-left py-2">Aiva</Link>
             <h3 className="text-[19px] font-bold text-[#1d1d1f] mb-3">Socials</h3>
             <a href="https://www.instagram.com/arceusai/" target="_blank" rel="noopener noreferrer" className="text-[15px] text-[#1d1d1f]/80 hover:text-[#1d1d1f] transition-colors w-full text-left py-2">Instagram</a>
             <a href="https://www.linkedin.com/company/arceusai/?viewAsMember=true" target="_blank" rel="noopener noreferrer" className="text-[15px] text-[#1d1d1f]/80 hover:text-[#1d1d1f] transition-colors w-full text-left py-2">LinkedIn</a>
