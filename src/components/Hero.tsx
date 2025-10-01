@@ -54,7 +54,7 @@ export default function Hero() {
     <section className="relative isolate mx-auto w-[min(1100px,92%)] bg-white px-4 sm:px-0">
       <div className="mx-auto mt-16 sm:mt-10 w-fit flex flex-col items-center">
         {/* Aiva app icon with drop shadow only */}
-        <div className="w-[140px] h-[140px] sm:w-[175px] sm:h-[175px] rounded-[35px] sm:rounded-[45px] shadow-[0_20px_40px_rgba(0,0,0,0.25)] overflow-hidden">
+        <div className="w-[148px] h-[148px] sm:w-[183px] sm:h-[183px] rounded-[39px] sm:rounded-[49px] shadow-[0_20px_40px_rgba(0,0,0,0.25)] overflow-hidden">
           <Image
             src="/assets/aiva-app-icon.png"
             alt="Aiva App Icon"
