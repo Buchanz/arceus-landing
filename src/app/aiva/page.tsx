@@ -55,8 +55,8 @@ export default function AivaPage() {
 
         {/* Main Content */}
         <div className="max-w-6xl mx-auto px-8 py-16">
-          {/* Apps Section */}
-          <div className="mb-32">
+                 {/* Apps Section */}
+                 <div id="apps" className="mb-32">
             <div className="grid md:grid-cols-2 gap-20 items-center">
               {/* Apps Image - Left */}
               <div className="order-2 md:order-1 flex justify-center">
@@ -100,8 +100,8 @@ export default function AivaPage() {
             <div className="mt-0 border-t border-gray-200" style={{width: 'calc(100% - 4rem - 120px)', marginLeft: 'calc(2rem + 60px)'}}></div>
           </div>
 
-          {/* Projects Section */}
-          <div className="mb-32">
+                 {/* Projects Section */}
+                 <div id="projects" className="mb-32">
             <div className="grid md:grid-cols-2 gap-20 items-center">
               {/* Text Content - Left */}
               <div className="flex justify-center">
@@ -145,8 +145,8 @@ export default function AivaPage() {
             <div className="mt-0 border-t border-gray-200" style={{width: 'calc(100% - 4rem - 120px)', marginLeft: 'calc(2rem + 60px)'}}></div>
           </div>
 
-          {/* Actions Section */}
-          <div className="mb-32">
+                 {/* Actions Section */}
+                 <div id="actions" className="mb-32">
             <div className="grid md:grid-cols-2 gap-20 items-center">
               {/* Tasks Image - Left */}
               <div className="order-2 md:order-1 flex justify-center">

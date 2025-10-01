@@ -132,11 +132,11 @@ export default function NavBar() {
               }}
               onMouseLeave={() => setIsAivaHovered(false)}
             >
-              <div className="max-w-6xl mx-auto flex justify-center items-center gap-8 h-12">
-                <a href="#" className="text-[15px] text-[#1d1d1f]/80 hover:text-[#1d1d1f] transition-colors">Apps</a>
-                <a href="#" className="text-[15px] text-[#1d1d1f]/80 hover:text-[#1d1d1f] transition-colors">Projects</a>
-                <a href="#" className="text-[15px] text-[#1d1d1f]/80 hover:text-[#1d1d1f] transition-colors">Tasks</a>
-              </div>
+                   <div className="max-w-6xl mx-auto flex justify-center items-center gap-8 h-12">
+                     <a href="/aiva#apps" className="text-[15px] text-[#1d1d1f]/80 hover:text-[#1d1d1f] transition-colors">Apps</a>
+                     <a href="/aiva#projects" className="text-[15px] text-[#1d1d1f]/80 hover:text-[#1d1d1f] transition-colors">Projects</a>
+                     <a href="/aiva#actions" className="text-[15px] text-[#1d1d1f]/80 hover:text-[#1d1d1f] transition-colors">Actions</a>
+                   </div>
             </div>
             
             {/* Socials dropdown */}
@@ -253,13 +253,13 @@ export default function NavBar() {
             <div className="py-6 px-4">
               {/* Aiva and Socials side by side */}
               <div className="grid grid-cols-2 gap-6">
-                {/* Aiva section */}
-                <div>
-                  <Link href="/aiva" className="block text-[19px] font-bold text-[#1d1d1f] mb-3 hover:text-[#1d1d1f] transition-colors">Aiva</Link>
-                  <a href="#" className="block text-[15px] text-[#1d1d1f]/80 hover:text-[#1d1d1f] transition-colors py-2">Apps</a>
-                  <a href="#" className="block text-[15px] text-[#1d1d1f]/80 hover:text-[#1d1d1f] transition-colors py-2">Projects</a>
-                  <a href="#" className="block text-[15px] text-[#1d1d1f]/80 hover:text-[#1d1d1f] transition-colors py-2">Tasks</a>
-                </div>
+                     {/* Aiva section */}
+                     <div>
+                       <Link href="/aiva" className="block text-[19px] font-bold text-[#1d1d1f] mb-3 hover:text-[#1d1d1f] transition-colors">Aiva</Link>
+                       <a href="/aiva#apps" className="block text-[15px] text-[#1d1d1f]/80 hover:text-[#1d1d1f] transition-colors py-2">Apps</a>
+                       <a href="/aiva#projects" className="block text-[15px] text-[#1d1d1f]/80 hover:text-[#1d1d1f] transition-colors py-2">Projects</a>
+                       <a href="/aiva#actions" className="block text-[15px] text-[#1d1d1f]/80 hover:text-[#1d1d1f] transition-colors py-2">Actions</a>
+                     </div>
                 
                 {/* Socials section */}
                 <div>
