@@ -5,12 +5,11 @@ export default function AivaPage() {
   return (
     <main className="min-h-screen bg-white text-[#1d1d1f] antialiased overflow-x-hidden flex flex-col">
       <NavBar />
-      <div className="transition-all duration-300 flex-1">
-        <div className="pt-20">
+      <div className="pt-14 transition-all duration-300 flex-1">
         {/* Gray Header Section */}
-        <div className="bg-gray-50 py-8 -mt-20 pt-28">
+        <div className="bg-gray-50 py-8 pt-8">
           <div className="max-w-7xl mx-auto px-8">
-            <div className="flex items-center justify-center min-h-[120px] -mt-24">
+            <div className="flex items-center justify-center min-h-[120px]">
               {/* Text and Logo - Side by Side */}
               <div className="flex items-center gap-8">
                 {/* Left Side - Text Only */}
@@ -186,7 +185,6 @@ export default function AivaPage() {
               Get Started with Aiva
             </a>
           </div>
-        </div>
         </div>
       </div>
       <BottomCTA />

@@ -28,7 +28,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white text-[#1d1d1f] antialiased overflow-x-hidden flex flex-col">
       <NavBar />
-      <div className="transition-all duration-300 flex-1">
+      <div className="pt-14 transition-all duration-300 flex-1">
         {/* Hero Section */}
         <section className="relative bg-white py-16 sm:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
