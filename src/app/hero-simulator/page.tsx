@@ -60,16 +60,22 @@ export default function HeroSimulator() {
                   Get things done effortlessly with built-in features that make Aiva helpful to you everyday
                 </p>
 
-                {/* CTAs */}
-                <div className="space-y-4">
-                  <button className="rounded-full bg-gradient-to-b from-blue-500 to-blue-600 px-8 py-4 text-lg font-semibold text-white hover:from-blue-600 hover:to-blue-700 transition-all duration-200 shadow-[0_4px_12px_rgba(59,130,246,0.4),0_2px_4px_rgba(0,0,0,0.1)] border border-blue-400/30 backdrop-blur-sm">
-                    Request beta access
-                  </button>
-                  <div className="text-left ml-9">
-                    <a href="https://apps.apple.com/ca/app/testflight/id899247664" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 text-lg font-medium">
-                      Download TestFlight
-                    </a>
-                  </div>
+                {/* Waitlist signup section */}
+                <div className="max-w-md">
+                  <form className="flex flex-col sm:flex-row gap-3">
+                    <input
+                      type="email"
+                      placeholder="Enter your email"
+                      className="flex-1 rounded-full border-0 px-4 py-3 sm:py-2 text-sm focus:outline-none shadow-[0_4px_8px_rgba(0,0,0,0.15)] bg-white"
+                    />
+                    <button 
+                      type="submit"
+                      className="rounded-full bg-gradient-to-b from-blue-500 to-blue-600 px-6 py-3 sm:py-2 text-sm font-semibold text-white hover:from-blue-600 hover:to-blue-700 transition-all duration-200 shadow-[0_4px_12px_rgba(59,130,246,0.4),0_2px_4px_rgba(0,0,0,0.1)] border border-blue-400/30 backdrop-blur-sm"
+                    >
+                      Join Waitlist
+                    </button>
+                  </form>
+                  
                 </div>
               </div>
 
