@@ -57,7 +57,7 @@ export default function Home() {
 
                 {/* Description */}
                 <p className="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed">
-                  Get things done effortlessly with built-in features that make Aiva helpful to you everyday
+                  Get things done effortlessly with all your applications in one centralized interface.
                 </p>
 
                 {/* Waitlist signup section */}
