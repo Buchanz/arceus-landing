@@ -178,7 +178,7 @@ export default function AppsPage() {
               {/* Category Tabs */}
               <div className="flex mb-8">
                 <div className="flex space-x-2">
-                  {Object.keys(appCategories).map((category) => (
+                  {(Object.keys(appCategories) as Array<keyof typeof appCategories>).map((category) => (
                     <button
                       key={category}
                       onClick={() => setActiveCategory(category)}
