@@ -6,7 +6,7 @@ import BottomCTA from '@/components/BottomCTA';
 
 export default function AppsPage() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState('All');
 
   // App categories with real apps organized alphabetically
@@ -259,7 +259,7 @@ export default function AppsPage() {
                   Search Results
                 </h2>
                 <p className="text-gray-600">
-                  Found {filteredApps.length} apps matching "{searchQuery}"
+                  Found {filteredApps.length} apps matching &quot;{searchQuery}&quot;
                 </p>
               </div>
 
