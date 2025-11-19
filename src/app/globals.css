@@ -10,7 +10,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-}
+  }
 
 html,
 body {
@@ -23,8 +23,8 @@ body { font-family: var(--font-sans); }
 /* Desktop nav hover blur effect - only for desktop */
 @media (min-width: 768px) {
   nav.group:hover ~ div {
-    filter: blur(4px);
-    opacity: 0.5;
+  filter: blur(4px);
+  opacity: 0.5;
     transition: filter 0.3s ease, opacity 0.3s ease;
   }
 }
@@ -47,4 +47,33 @@ body { font-family: var(--font-sans); }
   input, textarea {
     font-size: 16px; /* Prevents zoom on iOS */
   }
+}
+
+/* Animated scrolling for app icons - truly seamless infinite loop */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-scroll-left {
+  animation: scroll-left linear infinite;
+  will-change: transform;
+}
+
+.animate-scroll-right {
+  animation: scroll-right linear infinite;
+  will-change: transform;
 }

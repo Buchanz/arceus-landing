@@ -3,115 +3,128 @@
 import NavBar from "../components/NavBar";
 import BottomCTA from "../components/BottomCTA";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function Home() {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  
-  const images = [
-    { src: "/assets/Slack Image.png", alt: "Slack Interface" },
-    { src: "/assets/Docs image.png", alt: "Docs Interface" },
-    { src: "/assets/Gmail image.png", alt: "Gmail Interface" },
-    { src: "/assets/Agoda image.png", alt: "Agoda Interface" },
-    { src: "/assets/Uber eats image .png", alt: "Uber Eats Interface" },
-    { src: "/assets/Uber image.png", alt: "Uber Interface" }
-  ];
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000); // Change image every 3 seconds
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!email.trim()) {
+      setErrorMessage("Please enter your email address");
+      setSubmitStatus("error");
+      return;
+    }
 
-    return () => clearInterval(interval);
-  }, [images.length]);
+    setIsSubmitting(true);
+    setErrorMessage("");
+    setSubmitStatus("idle");
+
+    try {
+      const response = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: email.trim(), source: "landing" }),
+      });
+
+      const data = await response.json();
+
+      if (data.ok) {
+        setSubmitStatus("success");
+        setEmail("");
+        setTimeout(() => setSubmitStatus("idle"), 5000);
+      } else {
+        setErrorMessage(data.error || "Something went wrong. Please try again.");
+        setSubmitStatus("error");
+      }
+    } catch {
+      setErrorMessage("Network error. Please check your connection and try again.");
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
-    <main className="min-h-screen bg-white text-[#1d1d1f] antialiased overflow-x-hidden flex flex-col">
+    <main className="h-screen relative antialiased overflow-hidden flex flex-col">
+      {/* Full-screen background */}
+      <div className="fixed inset-0 z-0 w-full h-full">
+        <Image
+          src="/assets/Aiva-Banner-Image 2.heic"
+          alt="Aiva Banner"
+          fill
+          className="object-cover object-bottom w-full h-full"
+          priority
+          quality={90}
+          sizes="100vw"
+        />
+      </div>
+
       <NavBar />
-      <div className="pt-14 transition-all duration-300 flex-1">
-        {/* Hero Section */}
-        <section className="relative bg-white py-16 sm:py-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-              
-              {/* Left Side - Text Content */}
-              <div className="text-left">
-                {/* Branding */}
-                <div className="flex items-end gap-10 mb-8">
-                  <div className="w-24 h-24 rounded-[25px] shadow-[0_20px_40px_rgba(0,0,0,0.25)] overflow-hidden">
-                    <Image
-                      src="/assets/aiva-app-icon.png"
-                      alt="Aiva App Icon"
-                      width={96}
-                      height={96}
-                      className="w-full h-full object-cover"
-                    />
+      
+      {/* Hero Section */}
+      <section className="relative z-10 flex-1 flex items-end pb-64">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-end">
+            
+            {/* Left Side - Text Content */}
+            <div className="text-left">
+              {/* Main Title - Aiva */}
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-medium text-white mb-4 leading-tight">
+                Aiva
+              </h1>
+
+              {/* Subtitle */}
+              <p className="text-2xl sm:text-3xl lg:text-4xl text-white/90 leading-relaxed">
+                Intuition in your pocket
+              </p>
+            </div>
+
+            {/* Right Side - Email Form */}
+            <div className="flex justify-end">
+              <div className="w-full max-w-md">
+                <form onSubmit={handleSubmit} className="flex flex-row gap-3">
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="flex-1 rounded-full border border-white/30 bg-white/10 backdrop-blur-md px-6 py-3 text-base text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all"
+                    disabled={isSubmitting}
+                  />
+                  <button 
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="rounded-full border border-white/30 bg-white/10 backdrop-blur-md px-6 py-3 text-base font-semibold text-white hover:bg-white/20 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+                  >
+                    {isSubmitting ? "Joining..." : "Join Waitlist"}
+                  </button>
+                </form>
+
+                {/* Status messages */}
+                {submitStatus === "success" && (
+                  <div className="mt-4 text-sm text-green-300 font-medium">
+                    You&apos;re on the waitlist! A confirmation email will arrive shortly.
                   </div>
-                  <span className="text-8xl font-medium text-gray-300">Aiva</span>
-                </div>
-
-                {/* Headline */}
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black mb-6 leading-tight">
-                  Intuition in your pocket
-                </h1>
-
-                {/* Description */}
-                <p className="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed">
-                  Get things done effortlessly with all your applications in one centralized interface.
-                </p>
-
-                {/* Waitlist signup section */}
-                <div className="max-w-md">
-                  <form className="flex flex-col sm:flex-row gap-3">
-                    <input
-                      type="email"
-                      placeholder="Enter your email"
-                      className="flex-1 rounded-full border-0 px-4 py-3 sm:py-2 text-sm focus:outline-none shadow-[0_4px_8px_rgba(0,0,0,0.15)] bg-white"
-                    />
-                    <button 
-                      type="submit"
-                      className="rounded-full bg-gradient-to-b from-blue-500 to-blue-600 px-6 py-3 sm:py-2 text-sm font-semibold text-white hover:from-blue-600 hover:to-blue-700 transition-all duration-200 shadow-[0_4px_12px_rgba(59,130,246,0.4),0_2px_4px_rgba(0,0,0,0.1)] border border-blue-400/30 backdrop-blur-sm"
-                    >
-                      Join Waitlist
-                    </button>
-                  </form>
-                </div>
-              </div>
-
-              {/* Right Side - Carousel Images */}
-              <div className="flex justify-center lg:justify-end">
-                <div className="w-80 h-[600px] relative">
-                  {images.map((image, index) => (
-                    <div
-                      key={index}
-                      className={`absolute top-0 w-full h-full transition-opacity duration-1000 ${
-                        index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-                      } ${
-                        (image.src.includes('Uber image') || 
-                         image.src.includes('Docs image') || 
-                         image.src.includes('Gmail image')) 
-                          ? 'left-[-10px]' 
-                          : (image.src.includes('Agoda image') || 
-                             image.src.includes('Uber eats image'))
-                          ? 'left-[4px]'
-                          : 'left-0'
-                      }`}
-                    >
-                      <Image
-                        src={image.src}
-                        alt={image.alt}
-                        width={320}
-                        height={600}
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                  ))}
-                </div>
+                )}
+                
+                {submitStatus === "error" && (
+                  <div className="mt-4 text-sm text-amber-300 font-medium">
+                    {errorMessage}
+                  </div>
+                )}
               </div>
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+
       <BottomCTA />
     </main>
   );

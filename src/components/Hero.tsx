@@ -112,7 +112,7 @@ export default function Hero() {
           {submitStatus === "error" && (
             <div className="mt-3 text-sm text-amber-600 font-medium">
               {errorMessage}
-            </div>
+          </div>
           )}
         </div>
       </div>

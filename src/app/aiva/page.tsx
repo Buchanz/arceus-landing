@@ -1,192 +1,131 @@
+"use client";
+
 import NavBar from "@/components/NavBar";
 import BottomCTA from "@/components/BottomCTA";
+import Image from "next/image";
+import { useState, useEffect } from "react";
 
 export default function AivaPage() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  
+  const slides = [
+    {
+      id: "apps",
+      image: "/assets/Connect-Banner-Image.png",
+      title: "Apps",
+      subtitle: "Connect Apps and Services",
+      features: [
+        "Browse the App Library and add to Library",
+        "Log in once. Adjust preferences",
+        "Complete actions seamlessly"
+      ]
+    },
+    {
+      id: "projects",
+      image: "/assets/Projects-Banner-Image.heic",
+      title: "Projects",
+      subtitle: "Group tasks, tools and people",
+      features: [
+        "Start new project",
+        "Aiva links docs, messages, emails, reminders and people",
+        "As context changes, Aiva adapts and knows whats next"
+      ]
+    }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 10000); // Change every 10 seconds
+
+    return () => clearInterval(interval);
+  }, [slides.length]);
+
+  const currentSlideData = slides[currentSlide];
+
   return (
-    <main className="min-h-screen bg-white text-[#1d1d1f] antialiased overflow-x-hidden flex flex-col">
+    <main className="h-screen relative antialiased overflow-hidden flex flex-col">
+      {/* Full-screen background slider */}
+      <div className="fixed inset-0 z-0 w-full h-full">
+        {slides.map((slide, index) => (
+          <div
+            key={slide.id}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              index === currentSlide ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <Image
+              src={slide.image}
+              alt={`${slide.title} Banner`}
+              fill
+              className={`object-cover w-full h-full ${
+                slide.id === "apps" ? "object-[center_60%]" : "object-bottom"
+              }`}
+              priority={index === 0}
+              quality={90}
+              sizes="100vw"
+            />
+          </div>
+        ))}
+      </div>
+
       <NavBar />
-      <div className="pt-14 transition-all duration-300 flex-1">
-        {/* Gray Header Section */}
-        <div className="bg-gray-50 py-8 pt-8">
-          <div className="max-w-7xl mx-auto px-8">
-            <div className="flex items-center justify-center min-h-[120px]">
-              {/* Text and Logo - Side by Side */}
-              <div className="flex items-center gap-8">
-                {/* Left Side - Text Only */}
-                <div>
-                  <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
-                    How Aiva works
-                  </h1>
-                  <div>
-                    <p className="text-sm text-gray-600 mb-1">For iOS only</p>
-                    <p className="text-sm text-gray-600 mb-1">Coming soon to other platforms...</p>
-                    <a href="https://apps.apple.com/ca/app/testflight/id899247664" target="_blank" rel="noopener noreferrer" className="text-sm text-blue-400 hover:text-blue-500">
-                      Download TestFlight
-                    </a>
-                  </div>
-                </div>
-                
-                {/* Right Side - Aiva Logo */}
-                <div className="w-32 h-32 rounded-[36px] overflow-hidden shadow-lg">
-                  <img 
-                    src="/assets/aiva-app-icon.png" 
-                    alt="Aiva App Icon" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+      
+      {/* Content Section */}
+      <section className="relative z-10 flex-1 flex items-end pb-32 sm:pb-36">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-end">
+            
+            {/* Left Side - Text Content */}
+            <div className="text-left">
+              {/* Main Title */}
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-medium text-white mb-4 leading-tight">
+                {currentSlideData.title}
+              </h1>
+
+              {/* Subtitle */}
+              <p className="text-2xl sm:text-3xl lg:text-4xl text-white/90 leading-relaxed">
+                {currentSlideData.subtitle}
+              </p>
+            </div>
+
+            {/* Right Side - Bullet Points */}
+            <div className="flex justify-end">
+              <div className="w-full max-w-md">
+                <ul className="space-y-4">
+                  {currentSlideData.features.map((feature, index) => (
+                    <li key={index} className="flex items-start">
+                      <span className="w-1.5 h-1.5 bg-white rounded-full mt-3 mr-3 flex-shrink-0"></span>
+                      <span className="text-lg sm:text-xl text-white/90">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Main Content */}
-        <div className="max-w-6xl mx-auto px-8 py-16">
-                 {/* Apps Section */}
-                 <div id="apps" className="mb-32">
-            <div className="grid md:grid-cols-2 gap-20 items-center">
-              {/* Apps Image - Left */}
-              <div className="order-2 md:order-1 flex justify-center">
-                <div className="w-80">
-                  <img 
-                    src="/assets/Apps Landing Image.png" 
-                    alt="Apps Interface" 
-                    className="w-full h-auto rounded-2xl shadow-lg"
-                  />
-                </div>
-              </div>
-              
-              {/* Text Content - Right */}
-              <div className="order-1 md:order-2 flex justify-center">
-                <div className="w-80">
-                  <h2 className="text-4xl font-bold text-gray-900 mb-6">Apps</h2>
-                  <p className="text-xl text-gray-500 mb-8">
-                    Aiva connects to the apps and services you already use.
-                  </p>
-                  <ul className="space-y-4 mb-8">
-                    <li className="flex items-start">
-                      <span className="w-1.5 h-1.5 bg-gray-900 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      <span className="text-lg text-gray-500">Browse the App Library and add to Library</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="w-1.5 h-1.5 bg-gray-900 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      <span className="text-lg text-gray-500">Log in once. Adjust preferences</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="w-1.5 h-1.5 bg-gray-900 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      <span className="text-lg text-gray-500">Complete actions seamlessly</span>
-                    </li>
-                  </ul>
-                  <a href="#" className="text-blue-400 text-base font-medium">
-                    See App Library
-                  </a>
-                </div>
-              </div>
-            </div>
-            {/* Divider from left edge of left images to right edge of Projects image */}
-            <div className="mt-0 border-t border-gray-200" style={{width: 'calc(100% - 4rem - 120px)', marginLeft: 'calc(2rem + 60px)'}}></div>
-          </div>
-
-                 {/* Projects Section */}
-                 <div id="projects" className="mb-32">
-            <div className="grid md:grid-cols-2 gap-20 items-center">
-              {/* Text Content - Left */}
-              <div className="flex justify-center">
-                <div className="w-80">
-                  <h2 className="text-4xl font-bold text-gray-900 mb-6">Projects</h2>
-                  <p className="text-xl text-gray-500 mb-8">
-                    Use Projects to group tasks, tools, people and content - all in one place
-                  </p>
-                  <ul className="space-y-4 mb-8">
-                    <li className="flex items-start">
-                      <span className="w-1.5 h-1.5 bg-gray-900 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      <span className="text-lg text-gray-500">Start new project</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="w-1.5 h-1.5 bg-gray-900 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      <span className="text-lg text-gray-500">Aiva links docs, messages, emails, reminders and people</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="w-1.5 h-1.5 bg-gray-900 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      <span className="text-lg text-gray-500">As context changes, Aiva adapts and knows whats next</span>
-                    </li>
-                  </ul>
-                  <a href="#" className="text-blue-400 text-base font-medium">
-                    Learn how Projects work
-                  </a>
-                </div>
-              </div>
-              
-              {/* Projects Image - Right */}
-              <div className="flex justify-center">
-                <div className="w-80">
-                  <img 
-                    src="/assets/Projects Image.png" 
-                    alt="Projects Interface" 
-                    className="w-full h-auto rounded-2xl shadow-lg"
-                  />
-                </div>
-              </div>
-            </div>
-            {/* Divider from left edge of left images to right edge of Projects image */}
-            <div className="mt-0 border-t border-gray-200" style={{width: 'calc(100% - 4rem - 120px)', marginLeft: 'calc(2rem + 60px)'}}></div>
-          </div>
-
-                 {/* Actions Section */}
-                 <div id="actions" className="mb-32">
-            <div className="grid md:grid-cols-2 gap-20 items-center">
-              {/* Tasks Image - Left */}
-              <div className="order-2 md:order-1 flex justify-center">
-                <div className="w-80">
-                  <img 
-                    src="/assets/Tasks Image.png" 
-                    alt="Tasks Interface" 
-                    className="w-full h-auto rounded-2xl shadow-lg"
-                  />
-                </div>
-              </div>
-              
-              {/* Text Content - Right */}
-              <div className="order-1 md:order-2 flex justify-center">
-                <div className="w-80">
-                  <h2 className="text-4xl font-bold text-gray-900 mb-6">Actions</h2>
-                  <p className="text-xl text-gray-500 mb-8">
-                    Complete actions across all your favourite apps just by asking.
-                  </p>
-                  <ul className="space-y-4 mb-8">
-                    <li className="flex items-start">
-                      <span className="w-1.5 h-1.5 bg-gray-900 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      <span className="text-lg text-gray-500">Send request to Aiva</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="w-1.5 h-1.5 bg-gray-900 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      <span className="text-lg text-gray-500">Aiva navigates the connected applications</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="w-1.5 h-1.5 bg-gray-900 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      <span className="text-lg text-gray-500">Tasks are ready for completion and presented to the user to accept, edit or cancel.</span>
-                    </li>
-                  </ul>
-                  <a href="#" className="text-blue-400 text-base font-medium">
-                    Learn how Actions work
-                  </a>
-                </div>
-              </div>
-            </div>
-            {/* Divider from left edge of left images to right edge of Projects image */}
-            <div className="mt-0 border-t border-gray-200" style={{width: 'calc(100% - 4rem - 120px)', marginLeft: 'calc(2rem + 60px)'}}></div>
-          </div>
-
-          {/* Bottom CTA */}
-          <div className="text-center">
-            <h2 className="text-4xl font-bold text-gray-500 mb-6">
-              You do less while Aiva does more.
-            </h2>
-            <a href="#" className="text-blue-400 text-lg font-medium">
-              Get Started with Aiva
-            </a>
-          </div>
+      {/* Slide Indicators - Center of screen, just dots */}
+      <div className="fixed left-1/2 -translate-x-1/2 bottom-48 sm:bottom-52 z-20">
+        <div className="flex items-center gap-3">
+          {slides.map((slide, index) => (
+            <button
+              key={slide.id}
+              onClick={() => setCurrentSlide(index)}
+              className="transition-all duration-300"
+              aria-label={`Go to ${slide.title} slide`}
+            >
+              <div className={`rounded-full transition-all duration-300 ${
+                index === currentSlide 
+                  ? 'w-3 h-3 bg-white' 
+                  : 'w-2 h-2 bg-white/50 hover:bg-white/70'
+              }`} />
+            </button>
+          ))}
         </div>
       </div>
+
       <BottomCTA />
     </main>
   );
