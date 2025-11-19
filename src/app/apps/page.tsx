@@ -7,7 +7,6 @@ import BottomCTA from '@/components/BottomCTA';
 export default function AppsPage() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery] = useState('');
-  const [activeCategory, setActiveCategory] = useState('All');
 
   // App categories with real apps organized alphabetically
   const appCategories = {
@@ -145,6 +144,8 @@ export default function AppsPage() {
       ]
     }
   };
+
+  const [activeCategory, setActiveCategory] = useState<keyof typeof appCategories>('All');
 
   // Get all apps for search
   const allApps = Object.values(appCategories).flatMap(category => category.apps);
