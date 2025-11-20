@@ -3,13 +3,14 @@
 import NavBar from "../components/NavBar";
 import BottomCTA from "../components/BottomCTA";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function Home() {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const imageRef = useRef<HTMLDivElement>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -51,26 +52,108 @@ export default function Home() {
     }
   };
 
+  useEffect(() => {
+    if (imageRef.current && window.innerWidth < 768) {
+      const img = imageRef.current.querySelector('img');
+      if (img) {
+        img.style.objectPosition = 'center 30%';
+      }
+    }
+  }, []);
+
   return (
     <main className="min-h-screen sm:h-screen relative antialiased overflow-y-auto sm:overflow-hidden flex flex-col">
       {/* Full-screen background */}
-      <div className="fixed inset-0 z-0 w-full h-full">
-        <Image
-          src="/assets/Aiva-Banner-Image 2.heic"
-          alt="Aiva Banner"
-          fill
-          className="object-cover object-bottom w-full h-full"
-          priority
-          quality={90}
-          sizes="100vw"
-        />
+      <div ref={imageRef} className="absolute md:fixed inset-0 z-0 w-full h-full">
+        {/* Mobile - Welcome Image Container */}
+        <div className="md:hidden relative w-full" style={{ height: 'calc(100vw * 1.5)' }}>
+          <div className="absolute top-0 left-0 right-0 w-full h-full">
+            <Image
+              src="/assets/Aiva-Welcome-Image.jpeg"
+              alt="Aiva Welcome"
+              fill
+              className="object-contain object-top w-full h-full"
+              priority
+              quality={90}
+              sizes="100vw"
+            />
+          </div>
+        </div>
+        {/* Desktop - Banner Image */}
+        <div className="hidden md:block absolute inset-0 w-full h-full">
+          <Image
+            src="/assets/Aiva-Banner-Image 2.heic"
+            alt="Aiva Banner"
+            fill
+            className="object-cover object-bottom w-full h-full"
+            priority
+            quality={90}
+            sizes="100vw"
+          />
+        </div>
       </div>
 
       <NavBar />
       
       {/* Hero Section */}
-      <section className="relative z-10 flex-1 flex items-end pb-32 sm:pb-64 pt-48 sm:pt-0 min-h-screen sm:min-h-0">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <section className="relative z-10 flex-1 flex items-end pb-32 sm:pb-64 pt-0 sm:pt-0 min-h-screen sm:min-h-0">
+        <div className="md:hidden absolute bottom-[200px] left-0 right-0 w-full">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-end">
+              
+              {/* Left Side - Text Content */}
+              <div className="text-left">
+                {/* Main Title - Aiva */}
+                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-medium text-white mb-4 leading-tight">
+                  Aiva
+                </h1>
+
+                {/* Subtitle */}
+                <p className="text-2xl sm:text-3xl lg:text-4xl text-white/90 leading-relaxed">
+                  Intuition in your pocket
+                </p>
+              </div>
+
+              {/* Right Side - Email Form */}
+              <div className="flex justify-end">
+                <div className="w-full max-w-md">
+                  <form onSubmit={handleSubmit} className="flex flex-row gap-3">
+                    <input
+                      type="email"
+                      placeholder="Enter your email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="flex-1 rounded-full border border-white/30 bg-white/10 backdrop-blur-md px-6 py-3 text-base text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all"
+                      disabled={isSubmitting}
+                    />
+                    <button 
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="rounded-full border border-white/30 bg-white/10 backdrop-blur-md px-6 py-3 text-base font-semibold text-white hover:bg-white/20 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+                    >
+                      {isSubmitting ? "Joining..." : "Join Waitlist"}
+                    </button>
+                  </form>
+
+                  {/* Status messages */}
+                  {submitStatus === "success" && (
+                    <div className="mt-4 text-sm text-green-300 font-medium">
+                      You&apos;re on the waitlist! A confirmation email will arrive shortly.
+                    </div>
+                  )}
+                  
+                  {submitStatus === "error" && (
+                    <div className="mt-4 text-sm text-amber-300 font-medium">
+                      {errorMessage}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* Desktop version */}
+        <div className="hidden md:block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-end">
             
             {/* Left Side - Text Content */}

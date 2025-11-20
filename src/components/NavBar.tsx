@@ -12,12 +12,28 @@ export default function NavBar() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      // Use scrollIntoView for smoother, more reliable scrolling
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
-        inline: 'nearest'
-      });
+      // Check if mobile (screen width < 768px)
+      const isMobile = window.innerWidth < 768;
+      
+      if (isMobile) {
+        // On mobile, scroll to start (top) with offset for navbar
+        // Navbar is at top-4 (16px) and when expanded can be ~120px tall
+        const navbarOffset = 120;
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - navbarOffset;
+        
+        window.scrollTo({
+          top: Math.max(0, offsetPosition),
+          behavior: 'smooth'
+        });
+      } else {
+        // On desktop, center the element
+        element.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+          inline: 'nearest'
+        });
+      }
     }
   };
 

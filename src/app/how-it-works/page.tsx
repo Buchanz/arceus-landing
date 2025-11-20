@@ -26,8 +26,8 @@ export default function HowItWorksPage() {
       <section className="relative z-10 flex-1 pt-24 pb-32">
         <div className="max-w-6xl mx-auto px-8">
           {/* Apps Section */}
-          <div id="apps" className="mb-0">
-            <div className="grid md:grid-cols-2 gap-20 items-start">
+          <div id="apps" className="mb-0 scroll-mt-24 md:scroll-mt-0">
+            <div className="grid md:grid-cols-2 gap-20 items-center">
               {/* Apps Image - Left */}
               <div className="order-2 md:order-1 flex justify-center -mt-8 md:mt-0">
                 <div className="w-80">
@@ -70,8 +70,8 @@ export default function HowItWorksPage() {
           </div>
 
           {/* Contacts Section */}
-          <div id="contacts" className="mb-0">
-            <div className="grid md:grid-cols-2 gap-20 items-start">
+          <div id="contacts" className="mb-0 scroll-mt-24 md:scroll-mt-0">
+            <div className="grid md:grid-cols-2 gap-20 items-center">
               {/* Text Content - Left */}
               <div className="flex justify-center">
                 <div className="w-80">
@@ -114,8 +114,8 @@ export default function HowItWorksPage() {
           </div>
 
           {/* Projects Section */}
-          <div id="projects" className="mb-0">
-            <div className="grid md:grid-cols-2 gap-20 items-start">
+          <div id="projects" className="mb-0 scroll-mt-24 md:scroll-mt-0">
+            <div className="grid md:grid-cols-2 gap-20 items-center">
               {/* Projects Image - Left */}
               <div className="order-2 md:order-1 flex justify-center -mt-8 md:mt-0">
                 <div className="w-80">
@@ -158,8 +158,8 @@ export default function HowItWorksPage() {
           </div>
 
           {/* Actions Section */}
-          <div id="actions" className="mb-32">
-            <div className="grid md:grid-cols-2 gap-20 items-start">
+          <div id="actions" className="mb-32 scroll-mt-24 md:scroll-mt-0">
+            <div className="grid md:grid-cols-2 gap-20 items-center">
               {/* Text Content - Left */}
               <div className="flex justify-center">
                 <div className="w-80">
@@ -188,7 +188,7 @@ export default function HowItWorksPage() {
               <div className="flex justify-center -mt-8 md:mt-0">
                 <div className="w-80">
                   <Image 
-                    src="/assets/Actions-Image.png" 
+                    src="/assets/Action-Image.png" 
                     alt="Actions Interface" 
                     width={320}
                     height={600}
