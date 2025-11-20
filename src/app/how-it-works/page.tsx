@@ -27,9 +27,9 @@ export default function HowItWorksPage() {
         <div className="max-w-6xl mx-auto px-8">
           {/* Apps Section */}
           <div id="apps" className="mb-0">
-            <div className="grid md:grid-cols-2 gap-20 items-center">
+            <div className="grid md:grid-cols-2 gap-20 items-start">
               {/* Apps Image - Left */}
-              <div className="order-2 md:order-1 flex justify-center">
+              <div className="order-2 md:order-1 flex justify-center -mt-8 md:mt-0">
                 <div className="w-80">
                   <Image 
                     src="/assets/Apps-Image.png" 
@@ -65,11 +65,13 @@ export default function HowItWorksPage() {
                 </div>
               </div>
             </div>
+            {/* Mobile divider */}
+            <div className="md:hidden border-t border-white/20 my-12"></div>
           </div>
 
           {/* Contacts Section */}
           <div id="contacts" className="mb-0">
-            <div className="grid md:grid-cols-2 gap-20 items-center">
+            <div className="grid md:grid-cols-2 gap-20 items-start">
               {/* Text Content - Left */}
               <div className="flex justify-center">
                 <div className="w-80">
@@ -95,7 +97,7 @@ export default function HowItWorksPage() {
               </div>
               
               {/* Contacts Image - Right */}
-              <div className="flex justify-center">
+              <div className="flex justify-center -mt-8 md:mt-0">
                 <div className="w-80">
                   <Image 
                     src="/assets/Contacts-Image.png" 
@@ -107,13 +109,15 @@ export default function HowItWorksPage() {
                 </div>
               </div>
             </div>
+            {/* Mobile divider */}
+            <div className="md:hidden border-t border-white/20 my-12"></div>
           </div>
 
           {/* Projects Section */}
           <div id="projects" className="mb-0">
-            <div className="grid md:grid-cols-2 gap-20 items-center">
+            <div className="grid md:grid-cols-2 gap-20 items-start">
               {/* Projects Image - Left */}
-              <div className="order-2 md:order-1 flex justify-center">
+              <div className="order-2 md:order-1 flex justify-center -mt-8 md:mt-0">
                 <div className="w-80">
                   <Image 
                     src="/assets/Projects-Image.png" 
@@ -149,11 +153,13 @@ export default function HowItWorksPage() {
                 </div>
               </div>
             </div>
+            {/* Mobile divider */}
+            <div className="md:hidden border-t border-white/20 my-12"></div>
           </div>
 
           {/* Actions Section */}
           <div id="actions" className="mb-32">
-            <div className="grid md:grid-cols-2 gap-20 items-center">
+            <div className="grid md:grid-cols-2 gap-20 items-start">
               {/* Text Content - Left */}
               <div className="flex justify-center">
                 <div className="w-80">
@@ -179,7 +185,7 @@ export default function HowItWorksPage() {
               </div>
               
               {/* Actions Image - Right */}
-              <div className="flex justify-center">
+              <div className="flex justify-center -mt-8 md:mt-0">
                 <div className="w-80">
                   <Image 
                     src="/assets/Actions-Image.png" 

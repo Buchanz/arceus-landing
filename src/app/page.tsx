@@ -52,7 +52,7 @@ export default function Home() {
   };
 
   return (
-    <main className="h-screen relative antialiased overflow-hidden flex flex-col">
+    <main className="min-h-screen sm:h-screen relative antialiased overflow-y-auto sm:overflow-hidden flex flex-col">
       {/* Full-screen background */}
       <div className="fixed inset-0 z-0 w-full h-full">
         <Image
@@ -69,7 +69,7 @@ export default function Home() {
       <NavBar />
       
       {/* Hero Section */}
-      <section className="relative z-10 flex-1 flex items-end pb-64">
+      <section className="relative z-10 flex-1 flex items-end pb-32 sm:pb-64 pt-48 sm:pt-0 min-h-screen sm:min-h-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-end">
             
