@@ -10,7 +10,7 @@ export default function BottomCTA() {
   return (
     <>
       {/* Mobile - positioned right after image */}
-      <section className={`md:hidden z-20 pb-8 ${isHomePage ? 'absolute pt-0 left-0 right-0' : 'relative py-8 mt-8'}`} style={isHomePage ? { top: 'calc(100vw * 1.5)' } : undefined}>
+      <section className={`md:hidden z-20 pb-8 ${isHomePage ? 'relative pt-0 left-0 right-0' : 'relative py-8 mt-8'}`}>
         <div className={`absolute inset-0 ${bgClass} backdrop-blur-md`}></div>
         <div className="relative z-10 mx-auto w-[min(1200px,95%)] text-center text-white px-4">
           <div className="flex flex-col items-center gap-4 text-[17px] leading-6 text-white/80">

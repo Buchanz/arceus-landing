@@ -63,24 +63,9 @@ export default function Home() {
 
   return (
     <main className="min-h-screen sm:h-screen relative antialiased overflow-y-auto sm:overflow-hidden flex flex-col">
-      {/* Full-screen background */}
-      <div ref={imageRef} className="absolute md:fixed inset-0 z-0 w-full h-full">
-        {/* Mobile - Welcome Image Container */}
-        <div className="md:hidden relative w-full" style={{ height: 'calc(100vw * 1.5)' }}>
-          <div className="absolute top-0 left-0 right-0 w-full h-full">
-            <Image
-              src="/assets/Aiva-Welcome-Image.jpeg"
-              alt="Aiva Welcome"
-              fill
-              className="object-contain object-top w-full h-full"
-              priority
-              quality={90}
-              sizes="100vw"
-            />
-          </div>
-        </div>
-        {/* Desktop - Banner Image */}
-        <div className="hidden md:block absolute inset-0 w-full h-full">
+      {/* Desktop - Full-screen background */}
+      <div ref={imageRef} className="hidden md:block absolute md:fixed inset-0 z-0 w-full h-full">
+        <div className="absolute inset-0 w-full h-full">
           <Image
             src="/assets/Aiva-Banner-Image 2.heic"
             alt="Aiva Banner"
@@ -95,11 +80,22 @@ export default function Home() {
 
       <NavBar />
       
-      {/* Hero Section */}
-      <section className="relative z-10 flex-1 flex items-end pb-32 sm:pb-64 pt-0 sm:pt-0 min-h-screen sm:min-h-0">
-        <div className="md:hidden absolute bottom-[200px] left-0 right-0 w-full">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-end">
+      {/* Mobile - Welcome Image Container (in document flow) */}
+      <div className="md:hidden relative w-full" style={{ height: 'calc(100vw * 1.5)' }}>
+        <Image
+          src="/assets/Aiva-Welcome-Image.jpeg"
+          alt="Aiva Welcome"
+          fill
+          className="object-contain object-top w-full h-full"
+          priority
+          quality={90}
+          sizes="100vw"
+        />
+        
+        {/* Mobile - Text and Email Section - positioned at bottom of image */}
+        <div className="absolute bottom-0 left-0 right-0 w-full px-4 pb-6">
+          <div className="max-w-7xl mx-auto w-full">
+            <div className="flex flex-col gap-6">
               
               {/* Left Side - Text Content */}
               <div className="text-left">
@@ -115,7 +111,7 @@ export default function Home() {
               </div>
 
               {/* Right Side - Email Form */}
-              <div className="flex justify-end">
+              <div className="flex justify-start">
                 <div className="w-full max-w-md">
                   <form onSubmit={handleSubmit} className="flex flex-row gap-3">
                     <input
@@ -152,8 +148,11 @@ export default function Home() {
             </div>
           </div>
         </div>
-        {/* Desktop version */}
-        <div className="hidden md:block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      </div>
+
+      {/* Hero Section - Desktop */}
+      <section className="hidden md:block relative z-10 flex-1 flex items-end pb-32 sm:pb-64 pt-0 sm:pt-0 min-h-screen sm:min-h-0">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-end">
             
             {/* Left Side - Text Content */}
