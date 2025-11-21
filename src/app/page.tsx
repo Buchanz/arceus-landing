@@ -62,7 +62,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen sm:h-screen relative antialiased overflow-y-auto sm:overflow-hidden flex flex-col">
+    <main className="min-h-screen sm:h-screen relative antialiased overflow-y-auto sm:overflow-hidden flex flex-col bg-black md:bg-transparent">
       {/* Desktop - Full-screen background */}
       <div ref={imageRef} className="hidden md:block absolute md:fixed inset-0 z-0 w-full h-full">
         <div className="absolute inset-0 w-full h-full">
@@ -80,8 +80,8 @@ export default function Home() {
 
       <NavBar />
       
-      {/* Mobile - Welcome Image Container (in document flow) */}
-      <div className="md:hidden relative w-full" style={{ height: 'calc(100vw * 1.5)' }}>
+      {/* Mobile - Welcome Image Container (in document flow) - starts from absolute top */}
+      <div className="md:hidden relative w-full -mt-0" style={{ height: 'calc(100vw * 1.5)', marginTop: 0, paddingTop: 0, top: 0 }}>
         <Image
           src="/assets/Aiva-Welcome-Image.jpeg"
           alt="Aiva Welcome"
@@ -151,8 +151,8 @@ export default function Home() {
       </div>
 
       {/* Hero Section - Desktop */}
-      <section className="hidden md:block relative z-10 flex-1 flex items-end pb-32 sm:pb-64 pt-0 sm:pt-0 min-h-screen sm:min-h-0">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <section className="hidden md:flex relative z-10 flex-1 items-end w-full pb-32 sm:pb-64 self-stretch">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full self-end">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-end">
             
             {/* Left Side - Text Content */}
@@ -208,6 +208,9 @@ export default function Home() {
       </section>
 
       <BottomCTA />
+      
+      {/* Mobile - Black background below bottom CTA - extends to bottom */}
+      <div className="md:hidden w-full bg-black" style={{ minHeight: 'calc(100vh - calc(100vw * 1.5) - 200px)' }}></div>
     </main>
   );
 }
