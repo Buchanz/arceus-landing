@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function HowItWorksPage() {
   return (
-    <main className="min-h-screen relative antialiased overflow-x-hidden flex flex-col">
+    <main className="min-h-screen relative antialiased overflow-x-hidden">
       {/* Full-screen background */}
       <div className="fixed inset-0 z-0 w-full h-full">
         <Image
@@ -23,7 +23,7 @@ export default function HowItWorksPage() {
       <NavBar />
       
       {/* Content Section */}
-      <section className="relative z-10 flex-1 pt-24 pb-32">
+      <section className="relative z-10 flex-1 pt-24 pb-0">
         <div className="max-w-6xl mx-auto px-8">
           {/* Apps Section */}
           <div id="apps" className="mb-0 scroll-mt-24 md:scroll-mt-0">
@@ -158,7 +158,7 @@ export default function HowItWorksPage() {
           </div>
 
           {/* Actions Section */}
-          <div id="actions" className="mb-32 scroll-mt-24 md:scroll-mt-0">
+          <div id="actions" className="mb-0 scroll-mt-24 md:scroll-mt-0">
             <div className="grid md:grid-cols-2 gap-20 items-center">
               {/* Text Content - Left */}
               <div className="flex justify-center">
@@ -198,6 +198,9 @@ export default function HowItWorksPage() {
               </div>
             </div>
           </div>
+          
+          {/* Spacer to push bottom CTA down - below background image */}
+          <div className="h-[200vh] md:h-[300vh]"></div>
         </div>
       </section>
 

@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 export default function BottomCTA() {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
+  const isHowItWorksPage = pathname === "/how-it-works";
   const bgClass = isHomePage ? "bg-black" : "bg-black/20";
 
   return (
@@ -38,7 +39,7 @@ export default function BottomCTA() {
       </section>
 
       {/* Desktop */}
-      <section className="hidden md:block relative sm:fixed bottom-0 left-0 right-0 z-20 py-8 sm:py-10 mt-8 sm:mt-0">
+      <section className={`hidden md:block relative ${isHowItWorksPage ? '' : 'sm:fixed bottom-0'} left-0 right-0 z-20 py-8 sm:py-10 mt-8 sm:mt-0`}>
       <div className={`absolute inset-0 ${bgClass} backdrop-blur-md`}></div>
       <div className="relative z-10 mx-auto w-[min(1200px,95%)] text-center text-white px-4 sm:px-0">
 
