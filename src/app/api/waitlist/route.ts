@@ -20,21 +20,31 @@ export async function POST(req: Request) {
       return NextResponse.json({ ok: false, error: "Invalid email" }, { status: 400 });
     }
 
-    // 1) Always save to Supabase first (upsert) - this should never fail
-    const { error } = await supabase
-      .from("waitlist")
-      .upsert(
-        { email: String(email).toLowerCase(), source: source ?? "landing" },
-        { onConflict: "email" }
-      );
+    // 1) Try to save to Supabase first (upsert)
+    let supabaseSuccess = false;
+    try {
+      const { error } = await supabase
+        .from("waitlist")
+        .upsert(
+          { email: String(email).toLowerCase(), source: source ?? "landing" },
+          { onConflict: "email" }
+        );
 
-    if (error) {
-      const msg = String(error.message || "");
-      // allow unique/duplicate conflicts to pass silently
-      if (!/duplicate|unique/i.test(msg)) {
-        console.error("Supabase error:", error);
-        return NextResponse.json({ ok: false, error: "Failed to save email" }, { status: 500 });
+      if (error) {
+        const msg = String(error.message || "");
+        // allow unique/duplicate conflicts to pass silently
+        if (!/duplicate|unique/i.test(msg)) {
+          console.error("Supabase error:", error);
+          // Don't fail completely - continue to try sending email
+        } else {
+          supabaseSuccess = true;
+        }
+      } else {
+        supabaseSuccess = true;
       }
+    } catch (supabaseErr) {
+      console.error("Supabase connection error:", supabaseErr);
+      // Continue anyway - try to send email
     }
 
     // 2) Try to send email - Resend will queue it even if DNS is pending
@@ -157,19 +167,29 @@ export async function POST(req: Request) {
       });
       
       // Email queued successfully (even if DNS is pending)
+      // Return success even if Supabase failed (email confirmation is more important)
       return NextResponse.json({ ok: true });
       
     } catch (sendErr: unknown) {
       console.error("Resend email error:", sendErr instanceof Error ? sendErr.message : sendErr);
       
-      // If email fails completely, still return success since email is saved
-      // Resend will retry/queue once DNS is verified
-      return NextResponse.json({ ok: true });
+      // If email fails but Supabase succeeded, still return success
+      if (supabaseSuccess) {
+        return NextResponse.json({ ok: true });
+      }
+      // If both failed, return a more helpful error
+      return NextResponse.json({ 
+        ok: false, 
+        error: "Unable to process your request. Please try again later." 
+      }, { status: 500 });
     }
 
   } catch (e: unknown) {
     console.error("Unexpected error:", e);
     const errorMessage = e instanceof Error ? e.message : "Server error";
-    return NextResponse.json({ ok: false, error: errorMessage }, { status: 500 });
+    return NextResponse.json({ 
+      ok: false, 
+      error: "Something went wrong. Please try again." 
+    }, { status: 500 });
   }
 }

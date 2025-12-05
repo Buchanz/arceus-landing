@@ -310,6 +310,9 @@ export default function AppsPage() {
         )}
       </div>
       
+      {/* Spacer to ensure images are fully visible before bottom CTA */}
+      <div className="hidden md:block h-32"></div>
+      
       <BottomCTA />
     </div>
   );

@@ -30,13 +30,13 @@ export default function HowItWorksPage() {
             <div className="grid md:grid-cols-2 gap-20 items-center">
               {/* Apps Image - Left */}
               <div className="order-2 md:order-1 flex justify-center -mt-8 md:mt-0">
-                <div className="w-80">
+                <div className="w-80 h-[550px] overflow-hidden">
                   <Image 
                     src="/assets/Apps-Image.png" 
                     alt="Apps Interface" 
                     width={320}
-                    height={600}
-                    className="w-full h-auto rounded-2xl shadow-lg"
+                    height={550}
+                    className="w-full h-full object-contain rounded-2xl shadow-lg"
                   />
                 </div>
               </div>
@@ -98,13 +98,13 @@ export default function HowItWorksPage() {
               
               {/* Contacts Image - Right */}
               <div className="flex justify-center -mt-8 md:mt-0">
-                <div className="w-80">
+                <div className="w-80 h-[550px] overflow-hidden">
                   <Image 
                     src="/assets/Contacts-Image.png" 
                     alt="Contacts Interface" 
                     width={320}
-                    height={600}
-                    className="w-full h-auto rounded-2xl shadow-lg"
+                    height={550}
+                    className="w-full h-full object-contain rounded-2xl shadow-lg"
                   />
                 </div>
               </div>
@@ -118,13 +118,13 @@ export default function HowItWorksPage() {
             <div className="grid md:grid-cols-2 gap-20 items-center">
               {/* Projects Image - Left */}
               <div className="order-2 md:order-1 flex justify-center -mt-8 md:mt-0">
-                <div className="w-80">
+                <div className="w-80 h-[550px] overflow-hidden">
                   <Image 
                     src="/assets/Projects-Image.png" 
                     alt="Projects Interface" 
                     width={320}
-                    height={600}
-                    className="w-full h-auto rounded-2xl shadow-lg"
+                    height={550}
+                    className="w-full h-full object-contain rounded-2xl shadow-lg"
                   />
                 </div>
               </div>
@@ -158,7 +158,7 @@ export default function HowItWorksPage() {
           </div>
 
           {/* Actions Section */}
-          <div id="actions" className="mb-0 scroll-mt-24 md:scroll-mt-0">
+          <div id="actions" className="mb-32 scroll-mt-24 md:scroll-mt-0">
             <div className="grid md:grid-cols-2 gap-20 items-center">
               {/* Text Content - Left */}
               <div className="flex justify-center">
@@ -186,21 +186,21 @@ export default function HowItWorksPage() {
               
               {/* Actions Image - Right */}
               <div className="flex justify-center -mt-8 md:mt-0">
-                <div className="w-80">
+                <div className="w-80 h-[550px] overflow-hidden">
                   <Image 
                     src="/assets/Action-Image.png" 
                     alt="Actions Interface" 
                     width={320}
-                    height={600}
-                    className="w-full h-auto rounded-2xl shadow-lg"
+                    height={550}
+                    className="w-full h-full object-contain rounded-2xl shadow-lg"
                   />
                 </div>
               </div>
             </div>
           </div>
           
-          {/* Spacer to push bottom CTA down - below background image */}
-          <div className="h-[200vh] md:h-[300vh]"></div>
+          {/* Small spacer before bottom CTA */}
+          <div className="hidden md:block h-16"></div>
         </div>
       </section>
 

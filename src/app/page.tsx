@@ -112,7 +112,7 @@ export default function Home() {
 
               {/* Right Side - Email Form */}
               <div className="flex justify-start">
-                <div className="w-full max-w-md">
+                <div className="w-full max-w-md relative">
                   <form onSubmit={handleSubmit} className="flex flex-row gap-3">
                     <input
                       type="email"
@@ -131,18 +131,20 @@ export default function Home() {
                     </button>
                   </form>
 
-                  {/* Status messages */}
-                  {submitStatus === "success" && (
-                    <div className="mt-4 text-sm text-green-300 font-medium">
-                      You&apos;re on the waitlist! A confirmation email will arrive shortly.
-                    </div>
-                  )}
-                  
-                  {submitStatus === "error" && (
-                    <div className="mt-4 text-sm text-amber-300 font-medium">
-                      {errorMessage}
-                    </div>
-                  )}
+                  {/* Status messages - positioned below form without affecting its position */}
+                  <div className="absolute top-full left-0 right-0 mt-2">
+                    {submitStatus === "success" && (
+                      <div className="text-sm text-green-300 font-medium whitespace-normal break-words">
+                        You&apos;re on the waitlist! A confirmation email will arrive shortly.
+                      </div>
+                    )}
+                    
+                    {submitStatus === "error" && (
+                      <div className="text-sm text-amber-300 font-medium whitespace-normal break-words">
+                        {errorMessage}
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
@@ -170,7 +172,7 @@ export default function Home() {
 
             {/* Right Side - Email Form */}
             <div className="flex justify-end">
-              <div className="w-full max-w-md">
+              <div className="w-full max-w-md relative">
                 <form onSubmit={handleSubmit} className="flex flex-row gap-3">
                   <input
                     type="email"
@@ -189,18 +191,20 @@ export default function Home() {
                   </button>
                 </form>
 
-                {/* Status messages */}
-                {submitStatus === "success" && (
-                  <div className="mt-4 text-sm text-green-300 font-medium">
-                    You&apos;re on the waitlist! A confirmation email will arrive shortly.
-                  </div>
-                )}
-                
-                {submitStatus === "error" && (
-                  <div className="mt-4 text-sm text-amber-300 font-medium">
-                    {errorMessage}
-                  </div>
-                )}
+                {/* Status messages - positioned below form without affecting its position */}
+                <div className="absolute top-full left-0 right-0 mt-2">
+                  {submitStatus === "success" && (
+                    <div className="text-sm text-green-300 font-medium whitespace-normal break-words">
+                      You&apos;re on the waitlist! A confirmation email will arrive shortly.
+                    </div>
+                  )}
+                  
+                  {submitStatus === "error" && (
+                    <div className="text-sm text-amber-300 font-medium whitespace-normal break-words">
+                      {errorMessage}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>

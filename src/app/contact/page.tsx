@@ -100,6 +100,9 @@ export default function Contact() {
         </div>
       </section>
 
+      {/* Spacer to ensure content is fully visible before bottom CTA */}
+      <div className="hidden md:block h-32"></div>
+
       <BottomCTA />
     </main>
   );
